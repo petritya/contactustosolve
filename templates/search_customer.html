@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Ügyfél keresés{% endblock %}
+
+{% block content %}
+  <h3>Ügyfél keresése</h3><br><br>
+  
+  	<form id="searchform" method="get" accept-charset="utf-8">
+      <button class="searchbutton" type="submit">
+        <i>Keresés</i>
+      </button>
+      <input id="searchbox" name="q" type="text" placeholder="Ügyfél neve">
+    </form><br>
+	<table width="600px" class="list">
+		<tr>
+			<th class="list" width="33%">Ügyfél neve</th>
+			<th class="list" width="33%">Ügyfél telefonszáma</th>
+			<th class="list">Ügyfél e-mail címe</th>
+		</tr>
+		{% for customer in customers %}
+		<tr>
+			<td class="list"><a href="{% url 'customer_update' pk=customer.pk %}">{{ customer.customerName }}</a></td>
+			<td class="list">{{ customer.customerPhone }}</td>
+			<td class="list">{{ customer.customerEmail }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Új szolgáltató{% endblock %}
+
+{% block content %}
+  <h3>Új szolgáltató rögzítése</h3><br><br>
+  <form method="post">
+    {% csrf_token %}
+    <section id="new_provider">
+		<section id="new_provider_left">
+			<section id="new_provider_data" class="bordered">
+				<section class="text_block">
+					<div class="text">Szolgáltató neve: </div>
+					<div class="text">Kapcsolattartó neve: </div>
+					<div class="text">Város: </div>
+					<div class="text">Cím: </div>
+					<div class="text">Telefonszám: </div>
+					<div class="text">E-mail: </div>
+					<div class="text">Éjszaka elérhető? </div>
+				</section>
+				<section class="input_block">
+					<div class="text"><input type="text" name="providerName" required> *</div>
+					<div class="text"><input type="text" name="contactName"></div>
+					<div class="text"><input type="text" name="city" > *</div>
+					<div class="text"><input type="text" name="address" > *</div>
+					<div class="text"><input type="tel" name="phoneNumber" placeholder="70/123-4567" > *</div>
+					<div class="text"><input type="text" name="email"  placeholder="minta@valami.hu"> *</div>
+					<div class="text"><input type="checkbox" name="night"></div>
+				</section>
+			</section>
+			<section id="new_provider_activities" class="bordered">
+				<section class="text_block">
+					<div class="text">Tevékenységek: </div>
+				</section>
+				<section class="input_block">
+					<div><textarea name="activity" rows="4" cols="45"></textarea></div>
+				</section>
+			</section>
+		</section>
+		<section id="new_provider_right">
+			<section id="opening" class="bordered">
+				<section class="text_block" style="padding-bottom: 10px">
+					<div class="text">Nyitvatartás: </div>
+				</section>
+				<section>
+					<table class="centered">
+						<tr>
+							<td>Hétfő:</td>
+							<td><input type="time" name="monOp"></td>
+							<td>-</td>
+							<td><input type="time" name="monCl"></td>
+						</tr>
+						<tr>
+							<td>Kedd:</td>
+							<td><input type="time" name="tueOp"></td>
+							<td>-</td>
+							<td><input type="time" name="tueCl"></td>
+						</tr>
+						<tr>
+							<td>Szerda:</td>
+							<td><input type="time" name="wedOp"></td>
+							<td>-</td>
+							<td><input type="time" name="wedCl"></td>
+						</tr>
+						<tr>
+							<td>Csütörtök:</td>
+							<td><input type="time" name="thuOp"></td>
+							<td>-</td>
+							<td><input type="time" name="thuCl"></td>
+						</tr>
+						<tr>
+							<td>Péntek:</td>
+							<td><input type="time" name="friOp"></td>
+							<td>-</td>
+							<td><input type="time" name="friCl"></td>
+						</tr>
+						<tr>
+							<td>Szombat:</td>
+							<td><input type="time" name="satOp"></td>
+							<td>-</td>
+							<td><input type="time" name="satCl"></td>
+						</tr>
+						<tr>
+							<td>Vasárnap:</td>
+							<td><input type="time" name="sunOp"></td>
+							<td>-</td>
+							<td><input type="time" name="sunCl"></td>
+						</tr>
+					</table>
+				</section>
+				<section><br>*: kötelezően kitöldendő mező</section>
+			</section>
+		</section>
+	</section>
+    <br><br> 
+    <button type="submit">Mentés</button>
+	</form>
+{% endblock %}

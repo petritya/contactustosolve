@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Szolgáltató módosítás{% endblock %}
+
+{% block content %}
+  <h3>Szolgáltató adatainak módosítása</h3><br><br>
+  <form method="post">
+    {% csrf_token %}
+    <section id="new_provider">
+		<section id="new_provider_left">
+			<section id="new_provider_data" class="bordered">
+				<section class="text_block">
+					<div class="text">Szolgáltató neve: </div>
+					<div class="text">Kapcsolattartó neve: </div>
+					<div class="text">Város: </div>
+					<div class="text">Cím: </div>
+					<div class="text">Telefonszám: </div>
+					<div class="text">E-mail: </div>
+					<div class="text">Éjszaka elérhető? </div>
+				</section>
+				<section class="input_block">
+					<div class="text"><input type="text" name="providerName" value="{{ instance.providerName }}" required> *</div>
+					<div class="text"><input type="text" name="contactName" value="{{ instance.contactName }}"></div>
+					<div class="text"><input type="text" name="city" value="{{ instance.city }}"> *</div>
+					<div class="text"><input type="text" name="address" value="{{ instance.address }}"> *</div>
+					<div class="text"><input type="tel" name="phoneNumber" value="{{ instance.phoneNumber }}" placeholder="70/123-4567" > *</div>
+					<div class="text"><input type="text" name="email" value="{{ instance.email }}" placeholder="minta@valami.hu"> *</div>
+					<div class="text"><input type="checkbox" name="night" {% if instance.night %} checked {% endif %}></div>
+				</section>
+			</section>
+			<section id="new_provider_activities" class="bordered">
+				<section class="text_block">
+					<div class="text">Tevékenységek: </div>
+				</section>
+				<section class="input_block">
+					<div><textarea name="activity" rows="4" cols="45">{{ instance.activity }}</textarea></div>
+				</section>
+			</section>
+		</section>
+		<section id="new_provider_right">
+			<section id="opening" class="bordered">
+				<section class="text_block" style="padding-bottom: 10px">
+					<div class="text">Nyitvatartás: </div>
+				</section>
+				<section>
+					<table class="centered">
+						<tr>
+							<td>Hétfő:</td>
+							<td><input type="time" name="monOp" value="{{ instance.monOp }}"></td>
+							<td>-</td>
+							<td><input type="time" name="monCl" value="{{ instance.monCl }}"></td>
+						</tr>
+						<tr>
+							<td>Kedd:</td>
+							<td><input type="time" name="tueOp" value="{{ instance.tueOp }}"></td>
+							<td>-</td>
+							<td><input type="time" name="tueCl" value="{{ instance.tueCl }}"></td>
+						</tr>
+						<tr>
+							<td>Szerda:</td>
+							<td><input type="time" name="wedOp" value="{{ instance.wedOp }}"></td>
+							<td>-</td>
+							<td><input type="time" name="wedCl" value="{{ instance.wedCl }}"></td>
+						</tr>
+						<tr>
+							<td>Csütörtök:</td>
+							<td><input type="time" name="thuOp" value="{{ instance.thuOp }}"></td>
+							<td>-</td>
+							<td><input type="time" name="thuCl" value="{{ instance.thuCl }}"></td>
+						</tr>
+						<tr>
+							<td>Péntek:</td>
+							<td><input type="time" name="friOp" value="{{ instance.friOp }}"></td>
+							<td>-</td>
+							<td><input type="time" name="friCl" value="{{ instance.friCl }}"></td>
+						</tr>
+						<tr>
+							<td>Szombat:</td>
+							<td><input type="time" name="satOp" value="{{ instance.satOp }}"></td>
+							<td>-</td>
+							<td><input type="time" name="satCl" value="{{ instance.satCl }}"></td>
+						</tr>
+						<tr>
+							<td>Vasárnap:</td>
+							<td><input type="time" name="sunOp" value="{{ instance.sunOp }}"></td>
+							<td>-</td>
+							<td><input type="time" name="sunCl" value="{{ instance.sunCl }}"></td>
+						</tr>
+					</table>
+				</section>
+				<section><br>*: kötelezően kitöldendő mező</section>
+			</section>
+		</section>
+	</section>
+    <br><br> 
+    <button type="submit">Mentés</button>
+	</form>
+{% endblock %}

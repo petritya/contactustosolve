@@ -1,0 +1,91 @@
+a, a:link, a:visited , a:hover, a:active {
+	text-decoration: none;
+	color: #cc071e;
+	font-weight: bold;
+}
+
+section .left{
+	width: 150px;
+	padding: 20px 40px;
+	float: left;
+}
+
+section .right{
+	padding: 20px;
+	float: left;
+}
+
+header {
+	height: 40px;
+	padding: 10px 40px; 
+}
+
+section .menu a {
+	line-height: 28px;
+	display: block;
+}
+
+table.list, th.list, td.list {
+    border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+table, th, td {
+ 	padding: 5px;
+ }
+ 
+.new th {
+ 	text-align: right;
+}
+
+#new_provider {
+	width: 900px;
+	height: 330px;
+}
+
+#new_provider_left {
+	width: 340px;
+	float: left;
+}
+
+#new_provider_data {
+	width: 320px;
+	height: 200px;
+	margin-top: 15px;
+	padding: 10px;
+}
+
+#new_provider_right {
+	float: left;
+}
+
+#new_provider_activities {
+	width: 350px;
+	height: 100px;
+	padding: 10px;
+}
+
+section.text_block {
+	float: left;
+	padding-right: 3px;
+}
+
+section.input_block {
+	float: left;
+}
+
+#new_provider div {
+	padding-bottom: 5px;
+}
+
+.text {
+	height: 24px;
+}
+
+#opening {
+	width: 380px;
+	height: 260px;
+	margin: 15px 40px 0 60px;
+	padding: 10px;
+}
