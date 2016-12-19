@@ -79,11 +79,9 @@ WSGI_APPLICATION = 'myapps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'petcom',
-        'USER': 'petcom',
-        'PASSWORD': 'Valami59',
-        'HOST': 'sql3.ultraweb.hu',
-        'PORT': '3306',
+        'NAME': 'contactustosolve',
+        'USER': 'root',
+        'PASSWORD': 'admin',
     }
 }
 
