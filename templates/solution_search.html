@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Megoldás keresés{% endblock %}
+
+{% block content %}
+  <h3>Keresés a megoldások között</h3><br>
+  <table>
+  	<tr>
+  		<td>Keresés sorszám alapján:</td>
+  		<td>Keresés szolgáltató szerint:</td>
+  	</tr>
+  	<tr>
+  		<td>
+  			<form id="searchform" method="post" accept-charset="utf-8">
+	      		{% csrf_token %}
+	      		<button class="searchbutton" name="serach_by_id" type="submit">
+	        	<i>Keresés</i>
+	      		</button>
+	      		<input id="searchbox" name="q" type="text" placeholder="sorszám">
+   			</form>
+   		</td>
+  		<td>
+  			<form id="searchform" method="post" accept-charset="utf-8">
+	      		{% csrf_token %}
+	      		<button class="searchbutton" name="search_by_provider" type="submit">
+	        	<i>Keresés</i>
+	      		</button>
+	      		<input id="searchbox" name="p" type="text" placeholder="szolgáltató neve">
+   			</form>
+   		</td>
+  	</tr>
+  </table>
+	<br>
+   <table width="700px" class="list">
+		<tr>
+			<th class="list" width="20px">Id.</th>
+			<th class="list" width="150px">Ügyfél neve</th>
+			<th class="list" width="150px">Szolgáltató neve</th>
+			<th class="list" width="150px">Dátum</th>
+			<th class="list" width="50px">Lezárva</th>
+			<th class="list" width="50px">Email</th>
+		</tr>
+		{% for solution in solutions %}
+		<tr>
+			<td class="list">
+				<form name="selected_customer" method="post" action="{% url 'solution_search' %}">
+					{% csrf_token %}
+					<input type="hidden" name="solution_id" value="{{ solution.pk }}">
+					<input type="submit" name="selected_solution" value="{{ solution.pk }}" />
+				</form>
+			</td>
+			<td class="list">{{ solution.customer }}</td>
+			<td class="list">{{ solution.provider }}</td>
+			<td class="list">{{ solution.solutionDateTime }}</td>
+			<td class="list">
+				{% if solution.status %}
+  					<font color="green">Igen</font>
+  				{% else %}
+  					<font color="red">Nem</font>
+  				{% endif %}
+  			</td>
+			<td class="list">
+				{% if solution.sendToProvider %}
+  					<font color="green">Igen</font>
+  	 			{% else %}
+  					<font color="red">Nem</font>
+  	 			{% endif %}
+  	 		</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}Új megoldás{% endblock %}
+
+{% block content %}
+  <h3>Új megoldás rögzítése</h3>
+  <p>Javasolt megoldás <b>{{ customer.customerName }}</b> számára:</p>
+  <section id="new_provider">
+		<section id="new_provider_left">
+			<section id="new_provider_data" class="bordered">
+				<section class="text_block">
+					<div class="text">Szolgáltató neve: </div>
+					<div class="text">Kapcsolattartó neve: </div>
+					<div class="text">Város: </div>
+					<div class="text">Cím: </div>
+					<div class="text">Telefonszám: </div>
+					<div class="text">E-mail: </div>
+					<div class="text">Éjszaka elérhető? </div>
+				</section>
+				<section class="input_block">
+					<div class="text">{{ provider.providerName }}</div>
+					<div class="text">{{ provider.contactName }}</div>
+					<div class="text">{{ provider.city }}</div>
+					<div class="text">{{ provider.address }}</div>
+					<div class="text">{{ provider.phoneNumber }}</div>
+					<div class="text">{{ provider.email }}</div>
+					<div class="text">{% if provider.night %} Igen {% else %} Nem {% endif %}</div>
+				</section>
+			</section>
+			<section id="new_provider_activities" class="bordered">
+				<section class="text_block">
+					<div class="text">Tevékenységek: </div>
+				</section>
+				<section class="input_block">
+					<div>{{ provider.activity }}</div>
+				</section>
+			</section>
+		</section>
+		<section id="new_provider_right">
+			<section id="opening" class="bordered">
+				<section class="text_block" style="padding-bottom: 10px">
+					<div class="text">Nyitvatartás: </div>
+				</section>
+				<section>
+					<table class="centered">
+						<tr>
+							<td>Hétfő:</td>
+							<td>{{ provider.monOp|time:'H:i' }}</td>
+							<td>-</td>
+							<td>{{ provider.monCl|time:'H:i' }}</td>
+						</tr>
+						<tr>
+							<td>Kedd:</td>
+							<td>{{ provider.tueOp|time:'H:i' }}</td>
+							<td>-</td>
+							<td>{{ provider.tueCl|time:'H:i' }}</td>
+						</tr>
+						<tr>
+							<td>Szerda:</td>
+							<td>{{ provider.wedOp|time:'H:i' }}</td>
+							<td>-</td>
+							<td>{{ provider.wedCl|time:'H:i' }}</td>
+						</tr>
+						<tr>
+							<td>Csütörtök:</td>
+							<td>{{ provider.thuOp|time:'H:i' }}</td>
+							<td>-</td>
+							<td>{{ provider.thuCl|time:'H:i' }}</td>
+						</tr>
+						<tr>
+							<td>Péntek:</td>
+							<td>{{ provider.friOp|time:'H:i' }}</td>
+							<td>-</td>
+							<td>{{ provider.friCl|time:'H:i' }}</td>
+						</tr>
+						<tr>
+							<td>Szombat:</td>
+							<td>{{ provider.satOp|time:'H:i' }}</td>
+							<td>-</td>
+							<td>{{ provider.satCl|time:'H:i' }}</td>
+						</tr>
+						<tr>
+							<td>Vasárnap:</td>
+							<td>{{ provider.sunOp|time:'H:i' }}</td>
+							<td>-</td>
+							<td>{{ provider.sunCl|time:'H:i' }}</td>
+						</tr>
+					</table>
+				</section>
+			</section>
+		</section>
+	</section>
+	<section style="float: left;">
+		<form name="solution_save" method="post" action="{% url 'new_solution' %}">
+		  	{% csrf_token %}
+			<input type="hidden" name="customer_id" value="{{ customer.pk }}">
+			<input type="hidden" name="provider_id" value="{{ provider.pk }}">
+			<input type="hidden" name="customer_id" value="{{ customer.pk }}">
+			<input type="submit" name="solution_save" value="Megoldás rögzítése" />
+		 </form>
+	</section>
+{% endblock %}

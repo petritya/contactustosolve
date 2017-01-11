@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Megoldás keresés{% endblock %}
+
+{% block content %}
+  <h3><i>{{ solution.pk }}. számú megoldás adatai:</i></h3><br>
+  <p>Ügyfél neve: <b>{{ solution.customer }}</b></p>
+  <p>Szolgáltató neve: <b>{{ solution.provider }}</b></p>
+  <p>Kapcsolattartó neve: <b>{{ solution.provider.contactName }}</b></p>
+  <p>Telefonszám: <b>{{ solution.provider.phoneNumber }}</b></p>
+  <p>E-mail: <b>{{ solution.provider.email }}</b></p>
+  <p>Lezárva:<b>
+  	{% if solution.status %}
+  		{{ solution.closingDateTime }}
+  	{% else %}
+  		Nem
+  		<form name="close" method="post" accept-charset="utf-8" action="{% url 'solution_close' %}">
+      		{% csrf_token %}
+      		<input type="hidden" name="solution_id" value="{{ solution.pk }}">
+      		<button class="searchbutton" name="closing_solution" type="submit">
+        	<i>Lezárás</i>
+      		</button>
+  		</form>
+  	{% endif %}
+    </b> 
+   </p>
+   <p>E-mail: <b>
+     {% if solution.sendToProvider %}
+  		Igen
+  	 {% else %}
+  		Nem
+  		<form name="close" method="post" accept-charset="utf-8" action="{% url 'solution_email' %}">
+      		{% csrf_token %}
+      		<input type="hidden" name="solution_id" value="{{ solution.pk }}">
+      		<button class="searchbutton" type="submit">
+        	<i>E-mail küldés</i>
+      		</button>
+  		</form>
+  	 {% endif %}
+     </b>
+   </p>
+{% endblock %}

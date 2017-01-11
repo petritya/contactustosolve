@@ -21,10 +21,10 @@
 				<section class="input_block">
 					<div class="text"><input type="text" name="providerName" value="{{ instance.providerName }}" required> *</div>
 					<div class="text"><input type="text" name="contactName" value="{{ instance.contactName }}"></div>
-					<div class="text"><input type="text" name="city" value="{{ instance.city }}"> *</div>
-					<div class="text"><input type="text" name="address" value="{{ instance.address }}"> *</div>
-					<div class="text"><input type="tel" name="phoneNumber" value="{{ instance.phoneNumber }}" placeholder="70/123-4567" > *</div>
-					<div class="text"><input type="text" name="email" value="{{ instance.email }}" placeholder="minta@valami.hu"> *</div>
+					<div class="text"><input type="text" name="city" value="{{ instance.city }}" required> *</div>
+					<div class="text"><input type="text" name="address" value="{{ instance.address }}" required> *</div>
+					<div class="text"><input type="tel" name="phoneNumber" value="{{ instance.phoneNumber }}" placeholder="70/123-4567" required> *</div>
+					<div class="text"><input type="text" name="email" value="{{ instance.email }}" placeholder="minta@valami.hu" required> *</div>
 					<div class="text"><input type="checkbox" name="night" {% if instance.night %} checked {% endif %}></div>
 				</section>
 			</section>
@@ -46,45 +46,45 @@
 					<table class="centered">
 						<tr>
 							<td>Hétfő:</td>
-							<td><input type="time" name="monOp" value="{{ instance.monOp }}"></td>
+							<td><input type="time" name="monOp" value="{{ instance.monOp|time:'H:i' }}"></td>
 							<td>-</td>
-							<td><input type="time" name="monCl" value="{{ instance.monCl }}"></td>
+							<td><input type="time" name="monCl" value="{{ instance.monCl|time:'H:i' }}"></td>
 						</tr>
 						<tr>
 							<td>Kedd:</td>
-							<td><input type="time" name="tueOp" value="{{ instance.tueOp }}"></td>
+							<td><input type="time" name="tueOp" value="{{ instance.tueOp|time:'H:i' }}"></td>
 							<td>-</td>
-							<td><input type="time" name="tueCl" value="{{ instance.tueCl }}"></td>
+							<td><input type="time" name="tueCl" value="{{ instance.tueCl|time:'H:i' }}"></td>
 						</tr>
 						<tr>
 							<td>Szerda:</td>
-							<td><input type="time" name="wedOp" value="{{ instance.wedOp }}"></td>
+							<td><input type="time" name="wedOp" value="{{ instance.wedOp|time:'H:i' }}"></td>
 							<td>-</td>
-							<td><input type="time" name="wedCl" value="{{ instance.wedCl }}"></td>
+							<td><input type="time" name="wedCl" value="{{ instance.wedCl|time:'H:i' }}"></td>
 						</tr>
 						<tr>
 							<td>Csütörtök:</td>
-							<td><input type="time" name="thuOp" value="{{ instance.thuOp }}"></td>
+							<td><input type="time" name="thuOp" value="{{ instance.thuOp|time:'H:i' }}"></td>
 							<td>-</td>
-							<td><input type="time" name="thuCl" value="{{ instance.thuCl }}"></td>
+							<td><input type="time" name="thuCl" value="{{ instance.thuCl|time:'H:i' }}"></td>
 						</tr>
 						<tr>
 							<td>Péntek:</td>
-							<td><input type="time" name="friOp" value="{{ instance.friOp }}"></td>
+							<td><input type="time" name="friOp" value="{{ instance.friOp|time:'H:i' }}"></td>
 							<td>-</td>
-							<td><input type="time" name="friCl" value="{{ instance.friCl }}"></td>
+							<td><input type="time" name="friCl" value="{{ instance.friCl|time:'H:i' }}"></td>
 						</tr>
 						<tr>
 							<td>Szombat:</td>
-							<td><input type="time" name="satOp" value="{{ instance.satOp }}"></td>
+							<td><input type="time" name="satOp" value="{{ instance.satOp|time:'H:i' }}"></td>
 							<td>-</td>
-							<td><input type="time" name="satCl" value="{{ instance.satCl }}"></td>
+							<td><input type="time" name="satCl" value="{{ instance.satCl|time:'H:i' }}"></td>
 						</tr>
 						<tr>
 							<td>Vasárnap:</td>
-							<td><input type="time" name="sunOp" value="{{ instance.sunOp }}"></td>
+							<td><input type="time" name="sunOp" value="{{ instance.sunOp|time:'H:i' }}"></td>
 							<td>-</td>
-							<td><input type="time" name="sunCl" value="{{ instance.sunCl }}"></td>
+							<td><input type="time" name="sunCl" value="{{ instance.sunCl|time:'H:i' }}"></td>
 						</tr>
 					</table>
 				</section>

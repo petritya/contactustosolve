@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Megoldás lezárva{% endblock %}
+
+{% block content %}
+  <h3>Megoldás lezárása</h3><br>
+  <p><i>{{ solution.pk }}. számú megoldás lezárva ekkor: {{ solution.closingDateTime }}</i></p><br>
+{% endblock %}

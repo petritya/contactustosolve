@@ -127,3 +127,9 @@ PHONENUMBER_DEFAULT_REGION = 'hu'
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/' # It means home view
+
+EMAIL_HOST = 'smtp.forpsi.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'noreply@contactustosolve.hu'
+EMAIL_HOST_PASSWORD = 'Valami59'
+EMAIL_USE_TLS = True

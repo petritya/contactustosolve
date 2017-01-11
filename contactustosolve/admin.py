@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Office, Customer, Provider, Profile
+from .models import Office, Customer, Provider, Profile, Solutions
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display=('customerName', 'customerPhone', 'customerEmail',)
@@ -14,3 +14,4 @@ admin.site.register(Office)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Provider, ProviderAdmin)
 admin.site.register(Profile)
+admin.site.register(Solutions)

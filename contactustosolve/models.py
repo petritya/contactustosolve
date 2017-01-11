@@ -28,7 +28,7 @@ def save_user_profile(sender, instance, **kwargs):
 class Customer(models.Model):
     customerName = models.CharField("Ügyfél neve", max_length=100)
     customerPhone = models.CharField("Ügyfél telefonszáma", max_length=15)
-    customerEmail = models.EmailField("Ügyfél e-mail címe", max_length=50, blank=True)
+    customerEmail = models.EmailField("Ügyfél e-mail címe", max_length=50, blank=True, null=True)
     office = models.ForeignKey(Office, on_delete=models.CASCADE)
         
     def __str__(self):
@@ -60,11 +60,17 @@ class Provider(models.Model):
     sunCl = models.TimeField(blank=True, null=True)
     office = models.ForeignKey(Office, on_delete=models.CASCADE)
     
+    def __str__(self):
+        return self.providerName
+    
+    def __unicode__(self):
+        return self.providerName
+    
 class Solutions(models.Model):
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     office = models.ForeignKey(Office, on_delete=models.CASCADE)
     solutionDateTime = models.DateTimeField(auto_now_add=True)
-    closingDateTime = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=5)
-    sendToProvider = models.CharField(max_length=5)
+    closingDateTime = models.DateTimeField(blank=True, null=True)
+    status = models.BooleanField(default=False)
+    sendToProvider = models.BooleanField(default=False)

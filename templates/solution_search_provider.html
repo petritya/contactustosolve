@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Új megoldás{% endblock %}
+
+{% block content %}
+  <h3>Új megoldás rögzítése</h3>
+  <p>Megoldás keresés <b>{{ customer.customerName }}</b> számára:</p>
+  <form id="searchform" method="post" accept-charset="utf-8">
+      {% csrf_token %}
+      <button class="searchbutton" type="submit">
+        <i>Keresés</i>
+      </button>
+      <input id="searchbox" name="q" type="text" placeholder="Szolgáltatás">
+      <input type="hidden" name="customer_id" value="{{ customer.pk }}">
+    </form><br>
+    <table width="600px" class="list">
+		<tr>
+			<th class="list" width="20px"></th>
+			<th class="list" width="30%">Szolgáltató neve</th>
+			<th class="list">Tevékenységek</th>
+		</tr>
+		{% for provider in providers %}
+		<tr>
+			<td class="list">
+				<form name="selected_customer" method="post" action="{% url 'new_solution' %}">
+					{% csrf_token %}
+					<input type="hidden" name="customer_id" value="{{ customer.pk }}">
+					<input type="hidden" name="provider_id" value="{{ provider.pk }}">
+					<input type="submit" value="OK" />
+				</form>
+			</td>
+			<td class="list">{{ provider.providerName }}</td>
+			<td class="list">{{ provider.activity }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endblock %}
